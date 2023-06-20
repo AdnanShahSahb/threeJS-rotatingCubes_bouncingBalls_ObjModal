@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/css/main.a80adc24.css",
+    "main.js": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/js/main.3fad4469.js",
+    "static/media/Soldier.glb": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/media/Soldier.f4f71ae8abedd78e209b.glb",
+    "static/media/cringey.jpg": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/media/cringey.6666b04757e180e76748.jpg",
+    "index.html": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/index.html",
+    "main.a80adc24.css.map": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/css/main.a80adc24.css.map",
+    "main.3fad4469.js.map": "/threeJS-rotatingCubes_bouncingBalls_ObjModal/static/js/main.3fad4469.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a80adc24.css",
+    "static/js/main.3fad4469.js"
+  ]
+}
