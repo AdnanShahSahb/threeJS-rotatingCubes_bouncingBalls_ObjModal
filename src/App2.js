@@ -7,26 +7,26 @@ import Scene5 from "./Scenes/Scene5";
 
 
 
-const App2=()=>{
+const App2 = () => {
 
-    const[btnClk,setBtnClk]=useState();
+    const [btnClk, setBtnClk] = useState(1);
 
 
-    return(
+    return (
         <div className={classes.mainDiv}>
 
 
-        <button onClick={()=>{setBtnClk(1)}}>3D Animation box</button>
-        <button onClick={()=>{setBtnClk(3)}}>Balls bouncing</button>
-        <button onClick={()=>{setBtnClk(5)}}>Soldier</button>
+            <button style={{ background: `${btnClk == 1 ? 'gray' : 'white'}`, color: `${btnClk == 1 ? 'white' : 'gray'}` }} onClick={() => { setBtnClk(1) }}>3D Animation box</button>
+            <button style={{ background: `${btnClk == 3 ? 'gray' : 'white'}`, color: `${btnClk == 3 ? 'white' : 'gray'}` }} onClick={() => { setBtnClk(3) }}>Balls bouncing</button>
+            <button style={{ background: `${btnClk == 5 ? 'gray' : 'white'}`, color: `${btnClk == 5 ? 'white' : 'gray'}` }} onClick={() => { setBtnClk(5) }}>Soldier</button>
 
 
 
-        {btnClk===1?<Scenario/>:<> </>}
-        {btnClk===3?<Scene3/>:<> </>}
-        {btnClk===5?<Scene5/>:<> </>}
+            {btnClk === 1 ? <Scenario /> : <> </>}
+            {btnClk === 3 ? <Scene3 /> : <> </>}
+            {btnClk === 5 ? <Scene5 /> : <> </>}
 
-    </div>
+        </div>
     )
 
 }

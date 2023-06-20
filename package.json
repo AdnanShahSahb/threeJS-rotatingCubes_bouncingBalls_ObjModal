@@ -1,18 +1,17 @@
 {
-  "name": "3js_proj",
+  "name": "3js_proj_1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-three/fiber": "^8.0.27",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "package.loader": "^0.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "three": "^0.141.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "three": "^0.153.0"
+
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,9 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "file-loader": "^6.2.0",
-    "react-svg-loader": "^3.0.3"
   }
 }
