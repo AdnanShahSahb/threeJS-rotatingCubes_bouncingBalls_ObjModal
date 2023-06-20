@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as SkeletonUtils from "../externalFiles/skeletoning";
@@ -6,12 +6,12 @@ import cringey from "../images/cringey.jpg"
 
 const Scene5 = () => {
 
+  const [loader, setLoader] = useState(true)
 
-  
   //USEeFFECT
   useEffect(() => {
 
-  let camera, scene, renderer,modelling;
+    let camera, scene, renderer, modelling;
 
     //SCENE SET
     camera = new THREE.PerspectiveCamera(
@@ -37,21 +37,21 @@ const Scene5 = () => {
     scene.add(directionalLight);
 
     //GROUND
-    
-      var planeGeometry=new THREE.PlaneGeometry(5, 5,5,5)
-    
 
-      var texture=new THREE.TextureLoader().load(cringey)
-      
-      scene.background=texture;
+    var planeGeometry = new THREE.PlaneGeometry(5, 5, 5, 5)
 
-    var planeMeterial=new THREE.MeshLambertMaterial({map:texture})
 
-    var plane=new THREE.Mesh(planeGeometry,planeMeterial)
-    plane.receiveShadow=true;
+    var texture = new THREE.TextureLoader().load(cringey)
 
-    plane.rotation.x=-0.5*Math.PI;
-    plane.position.set(0,0,0)
+    scene.background = texture;
+
+    var planeMeterial = new THREE.MeshLambertMaterial({ map: texture })
+
+    var plane = new THREE.Mesh(planeGeometry, planeMeterial)
+    plane.receiveShadow = true;
+
+    plane.rotation.x = -0.5 * Math.PI;
+    plane.position.set(0, 0, 0)
 
     scene.add(plane);
 
@@ -65,69 +65,77 @@ const Scene5 = () => {
 
 
     //
-    const convertingObj= new URL("../Soldier.glb",import.meta.url);
+    const convertingObj = new URL("../Soldier.glb", import.meta.url);
 
     //OBJ MODEL https://raw.githubusercontent.com/mrdoob/three.js/master/examples/models/gltf/Soldier.glb
     const loader = new GLTFLoader();
     loader.load(
       convertingObj.href,
       function (gltf) {
-         modelling = SkeletonUtils.clone(gltf.scene);
+        modelling = SkeletonUtils.clone(gltf.scene);
 
         modelling.position.x = 0;
         modelling.position.z = 1;
         // modelling.rotation.y=10;
 
 
-        modelling.scale.set(1.4,1.4,1.4)
+        modelling.scale.set(1.4, 1.4, 1.4)
 
-        
-        modelling.traverse( function ( child ) {
 
-          if ( child.isMesh ) child.material.map = new THREE.TextureLoader().load(cringey);
+        modelling.traverse(function (child) {
 
-        } );
-                  
+          if (child.isMesh) child.material.map = new THREE.TextureLoader().load(cringey);
+
+        });
+
         scene.add(modelling);
+
+        setLoader(false)
 
 
         animate();
-        
+
       }
     );
 
-     
-    
 
 
 
-    if (document.getElementById("rooting5").children[0]) {
+
+
+    if (document.getElementById("rooting5") && document.getElementById("rooting5").children[0]) {
       document
         .getElementById("rooting5")
         .removeChild(document.getElementById("rooting5").children[0]);
     }
 
-    if (document.getElementById("rooting5").children[0] == undefined) {
+    if (document.getElementById("rooting5") && document.getElementById("rooting5").children[0] == undefined) {
 
       document.getElementById("rooting5").appendChild(renderer.domElement);
-  }
+    }
 
 
-  //ANIMATE
-  function animate() {
-    requestAnimationFrame(animate);
+    //ANIMATE
+    function animate() {
+      requestAnimationFrame(animate);
 
-      modelling.rotation.y+=0.01;
+      modelling.rotation.y += 0.01;
 
-      modelling.position.y-=0.001;
+      modelling.position.y -= 0.001;
 
-    renderer.render(scene, camera);
+      renderer.render(scene, camera);
 
-  }
-});
+    }
+  });
 
 
-  return <div id="rooting5"></div>;
+  return <>
+    {loader ?
+      <h1 style={{ position: 'absolute', zIndex: 200, color: 'white', }}>Loading......</h1>
+      :
+      <div id="rooting5"></div>
+    }
+  </>;
 };
 export default Scene5;
 
